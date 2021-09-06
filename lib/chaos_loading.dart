@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
 class ChaosLoadingWidget extends StatefulWidget {
-  const ChaosLoadingWidget({Key? key, this.color = Colors.purpleAccent, this.size = 88.0})
+  const ChaosLoadingWidget(
+      {Key? key, this.color = Colors.purpleAccent, this.size = 88.0, this.count = 3})
       : super(key: key);
 
   final Color color;
   final double size;
+  final int count;
 
   @override
   State<StatefulWidget> createState() => _ChaosLoadingState();
@@ -20,6 +22,7 @@ class _ChaosLoadingState extends State<ChaosLoadingWidget> with TickerProviderSt
   late AnimationController _controller;
   late Animation<double> _animation;
   double angle = 0;
+  Random _random = Random(DateTime.now().millisecond);
 
   @override
   void initState() {
@@ -29,8 +32,37 @@ class _ChaosLoadingState extends State<ChaosLoadingWidget> with TickerProviderSt
     super.initState();
   }
 
+  int nextInt(int min, int max) {
+    return min + _random.nextInt(max - min);
+  }
+
+  List<AnimatedBuilder> _buildAnimations(int count) {
+    return List.generate(
+        count,
+        (index) => AnimatedBuilder(
+              animation: _animation,
+              builder: (context, _) => Transform(
+                transform: Matrix4.identity()
+                  ..rotate(
+                      vector.Vector3(
+                        nextInt(-6, 6).toDouble(),
+                        nextInt(-8, 8).toDouble(),
+                        nextInt(-10, 10).toDouble(),
+                      ),
+                      pi)
+                  ..rotateZ(_animation.value),
+                alignment: Alignment.center,
+                child: CustomPaint(
+                  painter: _ChaosPainter(widget.color),
+                  size: Size(widget.size, widget.size),
+                ),
+              ),
+            ));
+  }
+
   @override
   Widget build(BuildContext context) {
+    // children: _buildAnimations(widget.count),
     return Stack(
       children: [
         AnimatedBuilder(

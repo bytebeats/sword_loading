@@ -81,7 +81,10 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ChaosLoadingWidget(),
+            ChaosLoadingWidget(
+              color: Colors.purpleAccent,
+              size: 100,
+            ),
           ],
         ),
       ),

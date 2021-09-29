@@ -23,7 +23,7 @@ environment:
 dependencies:
     flutter:
         sdk: flutter
-    chaos_loading:
+    sword_loading:
         path: ..
 
     # The following adds the Cupertino Icons font to your application.

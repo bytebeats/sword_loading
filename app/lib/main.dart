@@ -1,4 +1,4 @@
-import 'package:chaos_loading/chaos_loading.dart';
+import 'package:sword_loading/chaos_loading.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -5,8 +5,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
-class ChaosLoadingWidget extends StatefulWidget {
-  const ChaosLoadingWidget(
+class SwordLoadingWidget extends StatefulWidget {
+  const SwordLoadingWidget(
       {Key? key, this.color = Colors.purpleAccent, this.size = 88.0, this.count = 3})
       : super(key: key);
 
@@ -18,7 +18,7 @@ class ChaosLoadingWidget extends StatefulWidget {
   State<StatefulWidget> createState() => _ChaosLoadingState();
 }
 
-class _ChaosLoadingState extends State<ChaosLoadingWidget> with TickerProviderStateMixin {
+class _ChaosLoadingState extends State<SwordLoadingWidget> with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
   double angle = 0;

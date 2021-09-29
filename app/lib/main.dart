@@ -1,5 +1,5 @@
-import 'package:sword_loading/chaos_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:sword_loading/sword_loading.dart';
 
 void main() {
   runApp(MyApp());
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ChaosLoadingWidget(
+            SwordLoadingWidget(
               color: Colors.purpleAccent,
               size: 100,
             ),
